@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KCode.BSON", "Kcode.BSON\KCode.BSON.csproj", "{11AFA2CF-5223-4FF8-B305-2DAEFF280519}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KCode.BSON.Tests", "Kcode.BSONTest\KCode.BSON.Tests.csproj", "{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99C4DE91-38EB-42C2-8220-8D80CED55195}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11AFA2CF-5223-4FF8-B305-2DAEFF280519}.Debug|x64.ActiveCfg = Debug|x64
+		{11AFA2CF-5223-4FF8-B305-2DAEFF280519}.Debug|x64.Build.0 = Debug|x64
+		{11AFA2CF-5223-4FF8-B305-2DAEFF280519}.Release|x64.ActiveCfg = Release|x64
+		{11AFA2CF-5223-4FF8-B305-2DAEFF280519}.Release|x64.Build.0 = Release|x64
+		{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}.Debug|x64.ActiveCfg = Debug|x64
+		{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}.Debug|x64.Build.0 = Debug|x64
+		{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}.Release|x64.ActiveCfg = Release|x64
+		{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5EF2FD2-00EB-4EA7-A6AF-76757B7B1DC5}
+	EndGlobalSection
+EndGlobal
