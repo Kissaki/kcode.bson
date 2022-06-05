@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KCode.BSON", "Kcode.BSON\KCode.BSON.csproj", "{11AFA2CF-5223-4FF8-B305-2DAEFF280519}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KCode.BSON.Tests", "Kcode.BSONTest\KCode.BSON.Tests.csproj", "{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KCode.BSON.Tests", "Kcode.BSON.Tests\KCode.BSON.Tests.csproj", "{5BEE6A47-0A11-4E4E-A0C5-8A69C882EFDC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99C4DE91-38EB-42C2-8220-8D80CED55195}"
 	ProjectSection(SolutionItems) = preProject
