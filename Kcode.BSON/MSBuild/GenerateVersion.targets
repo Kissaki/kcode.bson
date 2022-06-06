@@ -1,0 +1,59 @@
+﻿<Project>
+  <!-- Set property GenerateVersion = true to generate Version property value from Git tag -->
+  <!-- Ensures non-dirty workspace. Expects a v<i1>.<i2>.<i3> tag. -->
+
+  <Target Name="GenerateVersion" Condition="'$(GenerateVersion)'!=''" BeforeTargets="BeforeCompile">
+    <Message Text="Determining version from Git..." Importance="high" />
+
+    <!-- Ensure non-dirty workspace -->
+    <Exec Command="git diff-index --quiet HEAD --" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
+      <Output TaskParameter="ExitCode" PropertyName="IsDirtyWorkspaceResult" />
+    </Exec>
+    <Error Condition="$(IsDirtyWorkspaceResult)==1" Text="The workspace is dirty. Can not create a version like this." />
+
+    <!-- https://git-scm.com/docs/git-describe -->
+    <Exec Command="git describe --tags --exact-match --match v*.*.* --always" ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitDescribe" />
+      <Output TaskParameter="ExitCode" PropertyName="GitDescribeResult" />
+    </Exec>
+    <Error Condition="$(GitDescribeResult)!=0" Text="Missing v*.*.* version tag on current commit" />
+
+    <ParseVersion GitDescribe="$(GitDescribe)">
+      <Output TaskParameter="ParseVersionSuccess" PropertyName="ParseVersionSuccess" />
+      <Output TaskParameter="Major" PropertyName="Major" />
+      <Output TaskParameter="Minor" PropertyName="Minor" />
+      <Output TaskParameter="Patch" PropertyName="Patch" />
+    </ParseVersion>
+    <Error Condition="$(ParseVersionSuccess)" Text="Failed to parse version from $(GitDescribe)"  />
+
+    <CreateProperty Value="$(Major).$(Minor).$(Patch)">
+      <Output TaskParameter="Value" PropertyName="Version" />
+    </CreateProperty>
+
+    <Message Text="Generated Version set as: $(Version)" Importance="high" />
+  </Target>
+
+  <UsingTask TaskName="ParseVersion" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <GitDescribe ParameterType="System.String" Required="True" Output="False" />
+      <ParseVersionSuccess ParameterType="System.Boolean" Output="True" />
+      <Major Required="False" Output="True" />
+      <Minor Required="False" Output="True" />
+      <Patch Required="False" Output="True" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Text.RegularExpressions" />
+      <Using Namespace="System.Text.RegularExpressions" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          var r = new Regex(@"^v(?<v1>[0-9]+)\.(?<v2>[0-9]+)\.(?<v3>[0-9]+)$");
+          var m = r.Match(GitDescribe);
+          Success = m.Success;
+          Major = m.Groups["v1"].Value;
+          Minor = m.Groups["v2"].Value;
+          Patch = m.Groups["v3"].Value;
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>

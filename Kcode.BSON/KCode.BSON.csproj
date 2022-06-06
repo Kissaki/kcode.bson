@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
     <Authors>Jan Klass</Authors>
     <Description>A BSON deserializer and serializer</Description>
+    <Version>0.0.1</Version>
   </PropertyGroup>
+
+  <!-- -property GenerateVersion=true -->
+  <Import Project="MSBuild\GenerateVersion.targets" />
 
 </Project>
