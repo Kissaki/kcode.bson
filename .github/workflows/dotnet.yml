@@ -1,14 +1,13 @@
-name: .NET
+name: dotnet
 
 on:
   push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
-
+  test:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
@@ -17,9 +16,5 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --nologo --configuration Release --verbosity quiet | tee --append $GITHUB_STEP_SUMMARY
