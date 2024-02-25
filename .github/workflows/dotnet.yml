@@ -1,15 +1,12 @@
 name: dotnet
-
 on:
   push:
   pull_request:
-
 jobs:
   test:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
