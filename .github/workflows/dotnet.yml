@@ -14,4 +14,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Test
-      run: dotnet test --nologo --configuration Release --verbosity quiet | tee --append $GITHUB_STEP_SUMMARY
+      run: |
+        set -o pipefail
+        dotnet test --nologo --configuration Release --verbosity quiet | tee --append $GITHUB_STEP_SUMMARY
